@@ -9,6 +9,7 @@ int 	main(int argc, char **argv)
 {
 	int i;
 	int j;
+	int repeated;
 
 	if (argc == 3)
 	{
@@ -30,16 +31,15 @@ int 	main(int argc, char **argv)
 		while (argv[2][i])
 		{
 			j = 0;
+			repeated = 0;
             while(argv[1][j])
             {
                 if (argv[1][j] == argv[2][i])
-                    break;
+				{
+					repeated = 1;
+                    break ;
+				}
                 j++;
-            }
-            if (argv[1][j] != '\0')
-            {
-                i++;
-                continue;
             }
 			j = 0;
 			while (j < i)
@@ -48,7 +48,7 @@ int 	main(int argc, char **argv)
 					break ;
 				j++;
 			}
-			if (i == j)
+			if (i == j && repeated == 0)
 				ft_putchar(argv[2][i]);
 			i++;
 		}
